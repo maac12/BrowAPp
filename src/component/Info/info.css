@@ -1,18 +1,30 @@
-
-    
-.info { 
-    font-size: 20px;
-    margin-top: 40px;
+.info {
+  font-size: 20px;
+  margin-top: 30px;
+  background-color:  #dfd7d7af;
+  padding: 20px;
+  padding-top: 30px;
+  margin-bottom: 20px;
+  border-bottom-left-radius: 180px;
+  border-top-right-radius: 180px;
+ 
 }
-  
 
-
-.info button{ 
+.info button {
   font-size: 17px;
   padding: 14px;
+  
 
 }
 
 .giveSertficat {
- margin-left: 10px;
+  margin-left: 20px;
 }
+
+ body {
+  background: url(https://media.timeout.com/images/102210875/image.jpg) no-repeat;
+  background-size: 100%; /* Современные браузеры */
+ }
+
+
+

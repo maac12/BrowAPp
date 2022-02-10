@@ -5,10 +5,10 @@ import Logo from "../../images/logo.png"
 
 const Header = () => {
   return (
-    <div className="header">
+    <div className="header animate__animated animate__fadeInDown">
       <Row>
         <Col md="4" xs="4">
-          <Button variant="outline-dark" size="md">
+          <Button className="menuButton" variant="dark" size="md">
             MENU
           </Button>
         </Col>
@@ -24,7 +24,7 @@ const Header = () => {
           </Figure>
         </Col>
         <Col md="4" xs = "4">
-          <Button variant="outline-dark" size="md">
+          <Button variant="dark" size="md">
             ОСТАВИТЬ ОТЗЫВ
           </Button>
         </Col>
