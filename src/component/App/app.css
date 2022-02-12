@@ -15,7 +15,7 @@
 
 
         element {
-            --main-bg-color: #cbccce;
+            --main-bg-color: rgb(203,204,206);
           }
 
 
@@ -24,4 +24,4 @@
             background-color: var(--main-bg-color);
         }
 
-      
+   

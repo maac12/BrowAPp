@@ -16,8 +16,8 @@ const Header = () => {
         <Col md="4" xs="4">
           <Figure>
             <Figure.Image
-              width={250}
-              height={250}
+              width={150}
+              height={150}
               alt="171x180"
               src= {Logo}
             />

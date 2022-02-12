@@ -13,7 +13,6 @@
 .info button {
   font-size: 17px;
   padding: 14px;
-  
 
 }
 
@@ -22,9 +21,26 @@
 }
 
  body {
-  background: url(https://media.timeout.com/images/102210875/image.jpg) no-repeat;
-  background-size: 100%; /* Современные браузеры */
+  /* background: url(https://media.timeout.com/images/102210875/image.jpg) no-repeat;
+  background-size: 100%; Современные браузеры */
  }
 
 
+ :root {
+  --animate-duration: 1600ms;
+  --animate-delay: 2s;
+}
 
+.buttonInfoList {
+  opacity: 0.9;
+}
+
+.imageBackground { 
+  position: absolute;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  max-width: 1800px;
+  max-height: 1200px;
+  z-index: -1;
+}

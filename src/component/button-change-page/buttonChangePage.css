@@ -1,0 +1,8 @@
+.buttonChangePage { 
+    margin-top: 40px;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    border: none;
+    opacity: 0.9;
+}
