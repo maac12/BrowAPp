@@ -1,0 +1,24 @@
+.popularQuestions {
+    margin-top: 40px;
+    font-size: 16px;
+}
+
+.popularQuestions button {
+    border: none;
+}
+
+
+.headQuestions {
+    margin-bottom: 40px;
+}
+
+
+.accordion-button:not(.collapsed) {
+    background-color   : rgb(255, 255, 255);
+    color: black;
+}
+
+.accordion-button:focus{
+    border-color: #000000;
+    box-shadow: 0 0 0 0.25rem rgba(43, 43, 43, 0.25);
+}

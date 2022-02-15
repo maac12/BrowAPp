@@ -3,11 +3,12 @@ import "./buttonChangePage.css";
 
 import { DownOutlined } from "@ant-design/icons/lib/icons";
 import { Button, Row, Col } from "react-bootstrap";
-import changePage from "../../actions/index";
+import { nextPage } from "../../actions/index";
 import { connect } from "react-redux";
 
 const ButtonChangePage = (props) => {
-  const __changePage = () => props.dispatch(changePage());
+  const __nextPage = () => props.dispatch(nextPage());
+
 
   return (
     <Row>
@@ -17,7 +18,7 @@ const ButtonChangePage = (props) => {
         variant="outline-dark"
          className="buttonChangePage animate__animated animate__bounce animate__repeat-2"
           size="lg"
-          onClick={__changePage}
+          onClick={ __nextPage}
         >
           <DownOutlined />
         </Button>

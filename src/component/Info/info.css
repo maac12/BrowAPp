@@ -10,10 +10,9 @@
  
 }
 
-.info button {
-  font-size: 17px;
-  padding: 14px;
-
+.buttonUnderInfo { 
+  font-size: 16px;
+  padding: 12px;
 }
 
 .giveSertficat {
@@ -31,16 +30,23 @@
   --animate-delay: 2s;
 }
 
-.buttonInfoList {
-  opacity: 0.9;
-}
 
 .imageBackground { 
   position: absolute;
   margin: auto;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
-  max-width: 1800px;
-  max-height: 1200px;
+  width: 100%;
+  height: 100%;
   z-index: -1;
+  object-fit: cover;	
+}
+
+
+.pages-enter-activity{
+  animation: fade-in 1s forwards; 
+}
+
+.pages -exit-activity{
+  animation: fade-in 1s forwards; 
 }

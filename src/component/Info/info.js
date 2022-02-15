@@ -1,9 +1,14 @@
 import React from "react";
 import { Button, Row, Col } from "react-bootstrap";
 import "./info.css";
+import { connect } from "react-redux";
+
+import { setPage } from "../../actions/index";
 import ButtonChangePage from "../button-change-page/buttonChangePage";
 
-const Info = () => {
+const Info = (props) => {
+  const __setPage = (namePage) => props.dispatch(setPage(namePage));
+
   return (
     <div className="text-center">
       <img
@@ -12,7 +17,7 @@ const Info = () => {
         src="https://media.timeout.com/images/102210875/image.jpg"
       ></img>
       <Row>
-        <Col md="6 info animate__animated animate__fadeInDown">
+        <Col md="6 info animate__animated animate__fadeInUpBig">
           <h1>GULDARIA BROW BAR</h1>
           <p>Премиум салон бровей в центре Уфы</p>
           <p>+7 927 777 77 77</p>
@@ -23,14 +28,15 @@ const Info = () => {
       <Row className="d-flex buttonInfoList">
         <Col md="6" xs="12">
           <Button
-            className="animate__animated animate__fadeInDown"
+            onClick={() => __setPage("Price")}
+            className="animate__animated animate__fadeInUpBig buttonUnderInfo"
             variant="dark"
             size="lg"
           >
             СПИСОК УСЛУГ
           </Button>
           <Button
-            className="giveSertficat animate__animated animate__fadeInDown"
+            className="giveSertficat animate__animated animate__fadeInUpBig buttonUnderInfo"
             variant="dark"
             size="lg"
           >
@@ -44,4 +50,4 @@ const Info = () => {
   );
 };
 
-export default Info;
+export default connect()(Info);

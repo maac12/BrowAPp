@@ -2,11 +2,49 @@
     font-size: 20px;
 }
 .header button { 
-    font-size: 17px;
-  padding: 8px;
-  opacity: 0.9;
+    font-size: 16px;
+  padding: 12px;
 }
 
 .menuButton { 
-  width: 120px;
+  max-height: 50px;
 }
+
+.listMenu a{
+  text-decoration:none;
+  color: rgb(255, 255, 255);
+
+}
+
+.listMenu li{
+  list-style-type: none;
+  line-height: 2.3;
+}
+
+.listMenu a {
+  cursor: pointer;
+}
+
+.menu {
+  color: rgb(255, 255, 255);
+ background-color: rgba(0, 0, 0, 0.733);
+ font-size: 20px;
+}
+
+.menuModalName {
+  font-size: 32px;
+}
+
+.menuContact {
+  margin-top: 300px;
+}
+
+.menu button {
+  background-color: white;
+}
+
+.buttoFeedback {
+  max-width: 170px;
+  max-height: 50px;
+}
+
