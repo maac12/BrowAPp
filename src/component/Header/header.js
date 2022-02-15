@@ -18,7 +18,9 @@ import Logo from "../../images/logo.png";
 const Header = (props) => {
   //Состояния
   const [show, setShow] = useState(false);
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = useState(false);
+  const [arrowFeedback, setArrowFeedback] = useState([]);
+  const [tableVisible, setTableVisible] = useState(false);
 
   //Значения инпута отзыва
   const feedbackInput = useRef(null);
@@ -31,13 +33,14 @@ const Header = (props) => {
   const __setPage = (namePage) => props.dispatch(setPage(namePage));
 
   function MyVerticallyCenteredModal(props) {
-    const [arrowFeedback, setArrowFeedback] = useState([]);
+    
 
     //Добавитть отзыв
     const addFeedback = (value) => {
 
       setArrowFeedback([...arrowFeedback, value]);
       feedbackInput.current.value = "";
+      setTableVisible(true);
     };
 
     //Время
@@ -96,7 +99,7 @@ const Header = (props) => {
             Отправить
           </Button>
         </Modal.Footer>
-
+{ tableVisible ? (
         <Row>
           <Col md={12} className="justify-content-center">
           <h3 className="text-center">Ваш отзыв!</h3>
@@ -113,7 +116,7 @@ const Header = (props) => {
                </tbody>
             </Table>
           </Col>
-        </Row>
+        </Row>) :( null) }
       </Modal>
     );
   }

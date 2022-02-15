@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Row, Col } from "react-bootstrap";
+import React, { useState, useRef } from "react";
+import { Button, Row, Col, Modal, Form } from "react-bootstrap";
 import "./info.css";
 import { connect } from "react-redux";
 
@@ -7,7 +7,72 @@ import { setPage } from "../../actions/index";
 import ButtonChangePage from "../button-change-page/buttonChangePage";
 
 const Info = (props) => {
+  const [modalShow, setModalShow] = useState(false);
+  const name = useRef(null);
+  const phoneNumber = useRef(null);
+  const remind = useRef(null);
+  
+
+  
+
   const __setPage = (namePage) => props.dispatch(setPage(namePage));
+
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Записаться Online
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Ваше имя</Form.Label>
+              <Form.Control type="text" placeholder="Введите ваше имя" />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Номер телефона</Form.Label>
+              <Form.Control type="number" placeholder="Ваш номер телефона" />
+              <Form.Text className="text-muted">
+                Мы никому и никогда не передадим ваши личные данные!
+              </Form.Text>
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Время и Дата</Form.Label>
+              <Form.Control type="date" />
+            </Form.Group>
+            <Form.Check
+              type="switch"
+              id="custom-switch"
+              label="Напомнить за сутки до записи"
+            />
+
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label>Комментарий</Form.Label>
+              <Form.Control
+                type="sumbit"
+                as="textarea"
+                rows={3}
+              />
+            </Form.Group>
+            <Button type="submit" variant="success">
+              Отправить
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
+    );
+  }
 
   return (
     <div className="text-center">
@@ -39,12 +104,18 @@ const Info = (props) => {
             className="giveSertficat animate__animated animate__fadeInUpBig buttonUnderInfo"
             variant="dark"
             size="lg"
+            onClick={() => setModalShow(true)}
           >
             ЗАПИСАТЬСЯ ОНЛАЙН
           </Button>
           <ButtonChangePage />
         </Col>
         <Col md="4"></Col>
+
+        <MyVerticallyCenteredModal
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
       </Row>
     </div>
   );
