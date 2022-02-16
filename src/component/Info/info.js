@@ -8,69 +8,121 @@ import ButtonChangePage from "../button-change-page/buttonChangePage";
 
 const Info = (props) => {
   const [modalShow, setModalShow] = useState(false);
-  const name = useRef(null);
-  const phoneNumber = useRef(null);
-  const remind = useRef(null);
-  
-
-  
+  const [appointments, setAppointments] = useState([]);
+  const [isFormSent, setIsFormSent] = useState(false);
 
   const __setPage = (namePage) => props.dispatch(setPage(namePage));
 
+  console.log(appointments);
+  //Sumbit ref
+  const name = useRef(null);
+  const phoneNumber = useRef(null);
+  const remind = useRef(null);
+  const date = useRef(null);
+  const comment = useRef(null);
+
+  const submitOnlineBook = () => {
+    const remindTransform = remind.current.value === "on" ? "+" : "-";
+
+    const appointment = {
+      name: name.current.value,
+      phoneNumber: phoneNumber.current.value,
+      remind: remindTransform,
+      date: date.current.value,
+      comment: comment.current.value,
+    };
+
+    console.log(appointment);
+
+    setAppointments([...appointments, appointment]);
+    setIsFormSent(true);
+  };
+
+
+  //Button Записаться онлайн 
+  const startOnlineBooking = () => {
+    setModalShow(true);
+    setIsFormSent(false);
+  }
+ 
+
   function MyVerticallyCenteredModal(props) {
     return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Записаться Online
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>Ваше имя</Form.Label>
-              <Form.Control type="text" placeholder="Введите ваше имя" />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Номер телефона</Form.Label>
-              <Form.Control type="number" placeholder="Ваш номер телефона" />
-              <Form.Text className="text-muted">
-                Мы никому и никогда не передадим ваши личные данные!
-              </Form.Text>
-            </Form.Group>
+      <> { !isFormSent ?
+       ( <Modal
+          {...props}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+              Записаться Online
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group className="mb-3">
+                <Form.Label>Ваше имя</Form.Label>
+                <Form.Control
+                  ref={name}
+                  type="text"
+                  placeholder="Введите ваше имя"
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Номер телефона</Form.Label>
+                <Form.Control
+                  ref={phoneNumber}
+                  type="text"
+                  placeholder="Ваш номер телефона"
+                />
+                <Form.Text className="text-muted">
+                  Мы никому и никогда не передадим ваши личные данные!
+                </Form.Text>
+              </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Время и Дата</Form.Label>
-              <Form.Control type="date" />
-            </Form.Group>
-            <Form.Check
-              type="switch"
-              id="custom-switch"
-              label="Напомнить за сутки до записи"
-            />
-
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label>Комментарий</Form.Label>
-              <Form.Control
-                type="sumbit"
-                as="textarea"
-                rows={3}
+              <Form.Group className="mb-3">
+                <Form.Label>Время и Дата</Form.Label>
+                <Form.Control ref={date} type="datetime-local" />
+              </Form.Group>
+              <Form.Check
+                ref={remind}
+                type="switch"
+                id="custom-switch"
+                label="Напомнить за сутки до записи"
               />
-            </Form.Group>
-            <Button type="submit" variant="success">
-              Отправить
-            </Button>
-          </Form>
-        </Modal.Body>
-      </Modal>
+
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlTextarea1"
+              >
+                <Form.Label>Комментарий</Form.Label>
+                <Form.Control ref={comment} as="textarea" rows={3} />
+              </Form.Group>
+              <Button  variant="success" onClick={submitOnlineBook}>
+                Отправить
+              </Button>
+            </Form>
+          </Modal.Body>
+        </Modal>) : 
+      
+        (<Modal
+          {...props}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton>
+          </Modal.Header>
+          <Modal.Body>
+            <h2 className="text-center">Форма успешно отправлена!</h2>       
+          </Modal.Body>
+          <Modal.Footer className="d-flex justify-content-center">
+            <Button  variant="outline-dark"  onClick={props.onHide}>Закрыть</Button>
+          </Modal.Footer>
+        </Modal>) }
+      </>
     );
   }
 
@@ -104,7 +156,8 @@ const Info = (props) => {
             className="giveSertficat animate__animated animate__fadeInUpBig buttonUnderInfo"
             variant="dark"
             size="lg"
-            onClick={() => setModalShow(true)}
+            onClick={startOnlineBooking}
+            
           >
             ЗАПИСАТЬСЯ ОНЛАЙН
           </Button>

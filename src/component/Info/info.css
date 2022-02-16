@@ -50,3 +50,9 @@
 .pages -exit-activity{
   animation: fade-in 1s forwards; 
 }
+
+/* .sentSuccess { 
+  background-color: rgb(46, 228, 46);
+  color: black;
+  border-color: #19191a;
+} */

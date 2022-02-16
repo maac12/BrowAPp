@@ -140,8 +140,8 @@ const Header = (props) => {
               <Offcanvas.Title className="menuModalName">Меню</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <ul className="listMenu">
-                <li>
+              <ul className="listMenu unselectable " >
+                <li> 
                   <a onClick={() => __setPage("Info")}>ГЛАВНАЯ</a>
                 </li>
                 <li>
