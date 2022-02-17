@@ -7,20 +7,16 @@ import { connect } from "react-redux";
 import Header from "../header/header.js";
 import Info from "../info/info.js";
 import AboutMe from "../about-me/AboutMe";
-import PopularQuestions from "../popular-questions/popular-questions"
+import PopularQuestions from "../popular-questions/popular-questions";
 import Footer from "../footer/Footer";
-import Price from "../price/price"
-
-
+import Price from "../price/price";
 
 class App extends Component {
   render() {
-
-
     var mainWindow = "Info";
-    
+
     const { currentPage } = this.props;
-  
+
     if (currentPage === "Info") {
       mainWindow = <Info />;
     }
@@ -29,27 +25,26 @@ class App extends Component {
       mainWindow = <AboutMe />;
     }
 
-    if(currentPage === "PopularQuestions"){
-      mainWindow = <PopularQuestions/>;
+    if (currentPage === "PopularQuestions") {
+      mainWindow = <PopularQuestions />;
     }
 
-    
-    if(currentPage === "Price"){
-      mainWindow = <Price/>;
+    if (currentPage === "Price") {
+      mainWindow = <Price />;
     }
 
     return (
-      <Container>
-        <Header />
-        {mainWindow}
-       <Footer/>
-      </Container>
+        <Container>
+          <Header />
+          {mainWindow}
+          <Footer />
+        </Container>
     );
   }
 }
 
-const mapStateToProps = ({currentPage}) => {
-  return  {currentPage};
+const mapStateToProps = ({ currentPage }) => {
+  return { currentPage };
 };
 
 export default connect(mapStateToProps)(App);
