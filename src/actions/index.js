@@ -30,3 +30,14 @@ const nextPage = () => {
 };
 
 export { nextPage, setPage };
+
+
+
+//Админ здесь
+export const adminIsHere = (bool) => {
+  
+  return {
+    type: "ADMIN_IS_HERE",
+    admin: bool,
+  };
+};

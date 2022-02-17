@@ -1,11 +1,13 @@
 import React, { useRef, useState } from "react";
 import { Row, Col, Stack, Form, Button } from "react-bootstrap";
 import "./login-admin.css";
+import {connect} from "react-redux";
+import {adminIsHere} from "../../actions/index"
 
 import { login, logout, useAuth } from "../../firebase/firebase";
 
 
-const LoginAdmine = () => {
+const LoginAdmine = (props) => {
 
   const [loading, setLoading] = useState(false);
   const currentUser = useAuth();
@@ -13,6 +15,13 @@ const LoginAdmine = () => {
   const name = useRef("null");
   const password = useRef("null");
 
+  // Админка в редакс
+  const __adminIsHere = (bool) => props.dispatch(adminIsHere(bool));
+  if(!!currentUser) { 
+    if (currentUser.email === "admin@gmail.com") {__adminIsHere(true)}
+    else { __adminIsHere(false)}}
+ 
+  
   async function handleLogin() {
     setLoading(true);
     try {
@@ -82,4 +91,4 @@ const LoginAdmine = () => {
   );
 };
 
-export default LoginAdmine;
+export default connect()(LoginAdmine);
