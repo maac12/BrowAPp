@@ -4,10 +4,15 @@ const initialState = {
   indexPage: 0,
   currentPage: "Info",
   admin: false,
+  orders: [],
 };
 
+
+
+
 const reducer = (state = initialState, action) => {
-  console.log(state.admin);
+console.log(state)
+  
   switch (action.type) {
     case "CHANGE_PAGE":
       return {
@@ -17,8 +22,15 @@ const reducer = (state = initialState, action) => {
 
     case "ADMIN_IS_HERE":
       return {
+        ...state,
         admin: action.admin,
       };
+
+      case "ADD_ORDERS":
+        return {
+          ...state,
+          orders:[...state.orders, action.order],
+        };
 
     default:
       return state;

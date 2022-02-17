@@ -1,21 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import { connect } from "react-redux";
 
+import HeadAdmin from "./head";
+import WindowOFOrders from "./windowOfOrders";
 
 
 
 
-class AdminPage extends Component {
-  render() {
 
+const AdminPage = () => {
 
     return (
       <Container>
-         <h2>ADMIN PAGE</h2>
+        <HeadAdmin/>
+         <WindowOFOrders/>
       </Container>
     );
-  }
 }
 
 const mapStateToProps = ({currentPage}) => {

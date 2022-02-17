@@ -33,11 +33,21 @@ export { nextPage, setPage };
 
 
 
-//Админ здесь
+//Админка
 export const adminIsHere = (bool) => {
   
   return {
     type: "ADMIN_IS_HERE",
     admin: bool,
+  };
+};
+
+// заказы онлайн
+
+export const addOrder = (order) => { 
+
+  return {
+   type: "ADD_ORDERS",
+   order: order,
   };
 };

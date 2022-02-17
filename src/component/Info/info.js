@@ -3,7 +3,7 @@ import { Button, Row, Col, Modal, Form } from "react-bootstrap";
 import "./info.css";
 import { connect } from "react-redux";
 
-import { setPage } from "../../actions/index";
+import { setPage, addOrder } from "../../actions/index";
 import ButtonChangePage from "../button-change-page/buttonChangePage";
 
 const Info = (props) => {
@@ -11,9 +11,11 @@ const Info = (props) => {
   const [appointments, setAppointments] = useState([]);
   const [isFormSent, setIsFormSent] = useState(false);
 
+  //Redux
   const __setPage = (namePage) => props.dispatch(setPage(namePage));
+  const __addOrder = (order) => props.dispatch(addOrder(order));
 
-  console.log(appointments);
+ 
   //Sumbit ref
   const name = useRef(null);
   const phoneNumber = useRef(null);
@@ -36,6 +38,7 @@ const Info = (props) => {
 
     setAppointments([...appointments, appointment]);
     setIsFormSent(true);
+    __addOrder(appointment);
   };
 
 

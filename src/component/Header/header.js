@@ -29,8 +29,9 @@ const Header = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  //Установка страницы
+  //Редакс 
   const __setPage = (namePage) => props.dispatch(setPage(namePage));
+
 
   function MyVerticallyCenteredModal(props) {
     
